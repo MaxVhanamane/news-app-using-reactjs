@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
+import "../App.css"
 
 export default class Navbar extends Component {
     render() {
@@ -14,7 +15,7 @@ export default class Navbar extends Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link" aria-current="page" to="/">Home</Link>
+                                <Link className="nav-link " aria-current="page" to="/">Home</Link>
                             </li>
 
 

@@ -29,8 +29,14 @@ export default class News extends Component {
         }
     }
 
+    // Adding a function to capitalize first letter of news heading (h1) and title.
+    capitalize = s => s && s[0].toUpperCase() + s.slice(1)
     // creating updateNews function to get news from news api
     async updateNews() {
+        // Changing title as category changes
+        document.title = `${this.capitalize(this.props.category)} - DailyDose`
+        // this.props.setProgress(10) this used to set progress value for top loading bar.
+        this.props.setProgress(10)
         // url to get news from news api using api key
         let url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`
         // here pageSize is the number of results to return per page. To understand this read https://newsapi.org documentation.
@@ -38,18 +44,20 @@ export default class News extends Component {
 
         // data will be received in object form
         let data = await fetch(url)
+        this.props.setProgress(50)
         // parsing the received data
         let parsedData = await data.json()
-
+        this.props.setProgress(75)
         // Adding required data to the state
         this.setState({
             articles: parsedData.articles,
             totalResults: parsedData.totalResults,
             loading: false, // as we have received the data so there is no need to show the spinner anymore.
         })
+        this.props.setProgress(100)
     }
 
-     componentDidMount() {
+    componentDidMount() {
         this.updateNews()
     }
 
@@ -71,7 +79,7 @@ export default class News extends Component {
                 articles: this.state.articles.concat(parsedData.articles),
                 totalResults: parsedData.totalResults,
             })
-     
+
         })
 
     };
@@ -79,14 +87,14 @@ export default class News extends Component {
         return (
             <>
                 <div className="container my-4">
-                    <h1 className="text-center">Top News</h1>
+                    <h1 className="text-center my-4">Top {this.capitalize(this.props.category)} News</h1>
                     {this.state.loading && <Spinner />}
 
-                   {/* to use InfiniteScroll wrap the map function in InfiniteScroll component  
+                    {/* to use InfiniteScroll wrap the map function in InfiniteScroll component  
                         read the documentation for better understanding*/}
                     <InfiniteScroll
                         dataLength={this.state.articles.length}
-                        next={this.fetchMoreData} 
+                        next={this.fetchMoreData}
                         hasMore={this.state.articles.length !== this.state.totalResults} //Check whether the next set of news is available or not.
                         loader={<Spinner />}  // This will be shown when data is loading
                     >
@@ -94,7 +102,7 @@ export default class News extends Component {
                             <div className="row my-3">
                                 {this.state.articles.map((element) => {
                                     return <div key={uuidv4()} className="col-md-4">
-                                        < NewsItem title={element.title?element.title:"No title"} description={element.description} imageUrl={element.urlToImage} url={element.url} author={element.author} time={element.publishedAt} source={element.source.name} />
+                                        < NewsItem title={element.title ? element.title : "No title"} description={element.description} imageUrl={element.urlToImage} url={element.url} author={element.author} time={element.publishedAt} source={element.source.name} />
                                     </div>
                                 })}
                             </div>

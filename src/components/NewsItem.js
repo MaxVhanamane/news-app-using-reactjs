@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 export default class NewsItem extends Component {
 
+    Date=new Date(this.props.time).toGMTString().toString()
     render() {
 
         return (
@@ -12,7 +13,7 @@ export default class NewsItem extends Component {
                 <div className="card-body">
                     <h5 className="card-title"> {this.props.title}</h5>
                     <p className="card-text">{this.props.description}</p>
-                    <p className="card-text"><small className="text-muted">{this.props.source} <strong>&#183;</strong> By {this.props.author? this.props.author:"Unknown"} on {this.props.time}</small></p>
+                    <p className="card-text"><small className="text-muted">{this.props.source} <strong>&#183;</strong> By {this.props.author? this.props.author:"Unknown"} on {this.Date}</small></p>
                     <a href={this.props.url} className="btn btn-dark btn-sm" target="_blank" rel="noreferrer">Read more...</a>
                 </div>
             </div>
