@@ -8,7 +8,32 @@
   color: rgb(255, 255, 255) !important;
 }
 
-.navbar-warning .navbar-nav > li > a:hover,
-.navbar-warning .navbar-nav > li > a:focus {
-    color:  black !important;
+.active{
+  color:  black !important;
 }
+
+button:hover {
+  outline: none !important;
+  box-shadow: none !important;
+  }
+
+/* to change navbar toggler color when website is on mobile screen size */
+.custom-toggler.navbar-toggler {
+  border-color: rgb(0, 0, 0);
+}
+/* Setting the stroke to green using rgb values (0, 128, 0) */
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url(
+"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+ body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+

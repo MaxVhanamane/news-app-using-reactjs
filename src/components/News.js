@@ -16,7 +16,7 @@ export default function News(props) {
     const [page, setPage, pageRef] = useState(1)
     const [loading, setLoading] = useState(true)  // setting loading: true so that it can show spinner when web app starts.
     const [totalResults, setTotalResults] = useState(0)
-
+    
 
     // Adding a function to capitalize first letter of news heading (h1) and title.
     const capitalize = s => s && s[0].toUpperCase() + s.slice(1)
@@ -47,6 +47,7 @@ export default function News(props) {
         // Changing title as category changes
         document.title = `${props.title} - DailyDose`
         updateNews(props)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     // This function is required by the InfiniteScroll component
@@ -96,7 +97,7 @@ export default function News(props) {
                     <div className="container">
                         <div className="row my-3">
                             {articles.map((element) => {
-                                return <div key={uuidv4()} className="col-md-4">
+                                return <div key={uuidv4()} className=" col-md-6 col-sm-12 col-lg-4 ">
                                     < NewsItem title={element.title ? element.title : "No title"} description={element.description} imageUrl={element.urlToImage} url={element.url} author={element.author} time={element.publishedAt} source={element.source.name} />
                                 </div>
                             })}
