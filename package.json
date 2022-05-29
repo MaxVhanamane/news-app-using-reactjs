@@ -1,8 +1,8 @@
 {
-  "home":"http://MaxVhanamane.gihub.io/news-app-using-reactjs",
+  "homepage":"http://MaxVhanamane.gihub.io/news-app-using-reactjs",
   "name": "news-app",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
